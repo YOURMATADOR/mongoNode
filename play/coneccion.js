@@ -18,7 +18,6 @@ db.collection('node').insertMany([
 ], (err,result)=>{
     console.log(JSON.stringify(result.ops, undefined,2));
 });
-
 db.collection('node').find({}).toArray((err,result)=>{
 assert.equal(null,err);
 console.log(result);
