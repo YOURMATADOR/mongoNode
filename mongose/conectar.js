@@ -1,16 +1,20 @@
+const config = require('./config/config');
 const {mongoose} = require('./db/conectar'); //internos
 const {modelo} = require('./db/modelo');
 const {usuariosModelo} = require('./db/usuario');
- 
+ const actualiza = require('./actualizar');
 const bodyParse = require('body-parser'); // externos
 const express = require('express');
 const validos = require('./idValida');
-const PORT = process.env.PORT || 5000
+const eliminar = require('./eliminarR');
+const PORT = process.env.PORT;
 
 const app = express();
 
 app.use(bodyParse.json());
 app.use('/',validos.router);
+app.use('/',actualiza.router);
+app.use('/',eliminar.router);
 app.post('/todo', (req, res) => {
    console.log( req.body);
 
@@ -39,7 +43,7 @@ app.get('/todo', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log('App listening on port 3000!');
+    console.log(`aplicacion montada en el puerto ${PORT}`);
 });
 
 module.exports ={app};
