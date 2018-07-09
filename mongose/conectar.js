@@ -5,6 +5,7 @@ const {usuariosModelo} = require('./db/usuario');
 const bodyParse = require('body-parser'); // externos
 const express = require('express');
 const validos = require('./idValida');
+const PORT = process.env.PORT || 5000
 
 const app = express();
 
@@ -37,7 +38,7 @@ app.get('/todo', (req, res) => {
     });
 });
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log('App listening on port 3000!');
 });
 
