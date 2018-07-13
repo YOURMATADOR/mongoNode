@@ -1,6 +1,8 @@
 const config = require('./locales.json');
 
 let env = process.env.NODE_ENV || "desarrollo";
+
+if(env ==='desarrollo' || env ==='test'){
 console.log(config);
 
 
@@ -11,6 +13,7 @@ let llaves = Object.keys(variables);
 llaves.forEach(e => {
     process.env[e] = variables[e];
 });
+}
 
 // const env = process.env.NODE_ENV || "desarollo";
 
