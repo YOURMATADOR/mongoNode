@@ -1,0 +1,12 @@
+{
+    "desarrollo": {
+        "MONGODB_URI": "mongodb://localhost:27017/mogose",
+        "PORT": 3000,
+        "JWTSECRETO": "knkjfwkjfwekjfwbkj35"
+    },
+    "test": {
+        "MONGODB_URI": "mongodb://localhost:27017/mogoseTest",
+        "PORT": 3000,
+        "JWTSECRETO": "jwbebjvkjwvbwkjebuigi3298"
+    }
+}

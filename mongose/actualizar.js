@@ -8,17 +8,18 @@ const {
 } = require('./db/modelo');
 const _ = require('lodash');
 const bodyParse = require('body-parser'); // externos
+const {autenticar}= require('./db/autenticar');
 
 router.use(bodyParse.json());
 
-router.patch('/todo/:id', (req, res, next) => {
+router.patch('/todo/:id',autenticar, (req, res, next) => {
     var body = _.pick(req.body, ['nombre', 'edad']);
 
     if (!ObjectID.isValid(req.params.id)) return res.status(404).send({
         status: 404,
         type: 'Id no valida'
     });
-modelo.findByIdAndUpdate(req.params.id,{
+modelo.findOneAndUpdate({_id: req.params.id,_creador: req.usuario[0]._id},{
         $set: body
     },{new: true})
     .then((result) => {
